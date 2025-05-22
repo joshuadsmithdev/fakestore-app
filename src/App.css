@@ -1,45 +1,29 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+/* Make sure root doesn't cause layout shift */
 #root {
-  max-width: 1280px;
+  width: 100%;
+}
+
+/* Layout wrapper */
+.layout {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* Navbar Styles */
 .navbar {
   background-color: #1e1e1e;
   color: #fff;
@@ -47,10 +31,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .logo a {
@@ -71,6 +56,11 @@
   display: flex;
   list-style: none;
   gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0;
 }
 
 .nav-links a {
@@ -118,9 +108,11 @@
 
 .dropdown-menu a {
   padding: 0.25rem 0;
+  color: #fff;
+  text-decoration: none;
 }
 
-/* Mobile Responsive */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -129,13 +121,12 @@
   .nav-links {
     display: none;
     flex-direction: column;
-    gap: 1rem;
-    position: absolute;
     background: #1e1e1e;
+    position: absolute;
     top: 60px;
     right: 0;
     padding: 1rem 2rem;
-    border-radius: 10px 0 0 10px;
+    border-radius: 0 0 0 10px;
   }
 
   .nav-links.open {

@@ -43,7 +43,7 @@ const AddProduct = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <main className="layout">
       <h2>Add New Product</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
@@ -76,7 +76,7 @@ const AddProduct = () => {
 
       {success && <Alert variant="success" className="mt-3">Product added successfully (mocked).</Alert>}
       {error && <Alert variant="danger" className="mt-3">{error}</Alert>}
-    </Container>
+    </main>
   );
 };
 

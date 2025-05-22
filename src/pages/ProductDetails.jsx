@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Button, Card, Spinner, Alert } from 'react-bootstrap';
+import { Button, Card, Spinner, Alert, Container, Row, Col } from 'react-bootstrap';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -39,19 +39,25 @@ const ProductDetails = () => {
   if (error) return <Alert variant="danger" className="text-center mt-5">{error}</Alert>;
 
   return (
-    <Card className="mx-auto mt-4" style={{ maxWidth: '600px' }}>
-      <Card.Img variant="top" src={product.image} style={{ height: '400px', objectFit: 'contain' }} />
-      <Card.Body>
-        <Card.Title>{product.title}</Card.Title>
-        <Card.Text><strong>Category:</strong> {product.category}</Card.Text>
-        <Card.Text>{product.description}</Card.Text>
-        <Card.Text><strong>Price:</strong> ${product.price}</Card.Text>
-        <div className="d-flex justify-content-between">
-          <Button variant="success">Add to Cart</Button>
-          <Button variant="danger" onClick={handleDelete}>Delete</Button>
-        </div>
-      </Card.Body>
-    </Card>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col md={8} lg={6}>
+          <Card>
+            <Card.Img variant="top" src={product.image} style={{ height: '400px', objectFit: 'contain' }} />
+            <Card.Body>
+              <Card.Title>{product.title}</Card.Title>
+              <Card.Text><strong>Category:</strong> {product.category}</Card.Text>
+              <Card.Text>{product.description}</Card.Text>
+              <Card.Text><strong>Price:</strong> ${product.price}</Card.Text>
+              <div className="d-flex justify-content-between">
+                <Button variant="success">Add to Cart</Button>
+                <Button variant="danger" onClick={handleDelete}>Delete</Button>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

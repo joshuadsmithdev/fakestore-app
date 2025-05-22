@@ -1,34 +1,15 @@
-// pages/ProductList.jsx
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
-import { Container, Row, Spinner, Alert } from 'react-bootstrap';
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-      .then((res) => {
-        setProducts(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError('Failed to load products');
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <Spinner animation="border" className="d-block mx-auto mt-5" />;
-  if (error) return <Alert variant="danger" className="mt-5 text-center">{error}</Alert>;
-
+const ProductList = ({ products }) => {
   return (
     <Container className="mt-4">
       <Row>
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product) => (
+          <Col key={product.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
+            <ProductCard product={product} />
+          </Col>
         ))}
       </Row>
     </Container>
