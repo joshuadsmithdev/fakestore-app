@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductList from '../components/ProductList';
+import ProductList from "../pages/ProductList";
 
-function Home({ products, filteredProducts, selectedCategory, setSelectedCategory }) {
+function Home({ filteredProducts, selectedCategory, setSelectedCategory }) {
   return (
     <div>
       <header
