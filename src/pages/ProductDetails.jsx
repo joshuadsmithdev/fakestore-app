@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Card, Spinner, Alert, Container, Row, Col } from 'react-bootstrap';
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+
+
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -9,6 +13,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -50,7 +55,7 @@ const ProductDetails = () => {
               <Card.Text>{product.description}</Card.Text>
               <Card.Text><strong>Price:</strong> ${product.price}</Card.Text>
               <div className="d-flex justify-content-between">
-                <Button variant="success">Add to Cart</Button>
+                <Button variant="success" onClick={() => addToCart(product)}>Add to Cart</Button>
                 <Button variant="danger" onClick={handleDelete}>Delete</Button>
               </div>
             </Card.Body>

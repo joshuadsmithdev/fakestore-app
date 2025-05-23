@@ -4,7 +4,7 @@ import App from './App.jsx';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { CartContext } from './contexts/CartContext';
+
 import { CartProvider } from './contexts/CartProvider';
 
 createRoot(document.getElementById('root')).render(
