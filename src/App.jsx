@@ -7,6 +7,7 @@ import ProductDetails from './pages/ProductDetails';
 import AddProduct from './pages/AddProduct';
 import EditProduct from './pages/EditProduct';
 import axios from 'axios';
+import Cart from './pages/Cart';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/edit-product/:id" element={<EditProduct />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </Router>
