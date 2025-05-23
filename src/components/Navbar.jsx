@@ -2,13 +2,13 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
-
-
 function Navbar() {
   const { cartItems } = useContext(CartContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false); // ← new
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen); // ← new
 
   return (
     <nav className="navbar">
@@ -16,21 +16,24 @@ function Navbar() {
         <Link to="/">🎮 GameHub</Link>
       </div>
 
-      <div className="menu-toggle" onClick={toggleMenu}>
-        ☰
-      </div>
+      <div className="menu-toggle" onClick={toggleMenu}>☰</div>
 
       <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <li><Link to="/">Home</Link></li>
 
-        {/* Category Dropdown */}
+        {/* Clickable Dropdown */}
         <li className="dropdown">
-          <span>Categories ▾</span>
-          <ul className="dropdown-menu">
-            <li><Link to="/category/Keyboard">Keyboard</Link></li>
-            <li><Link to="/category/Mouse">Mouse</Link></li>
-            <li><Link to="/category/Headset">Headset</Link></li>
-          </ul>
+          <button className="dropdown-toggle" onClick={toggleDropdown}>
+            Categories ▾
+          </button>
+          {dropdownOpen && (
+            <ul className="dropdown-menu">
+              <li><Link to="/category/Keyboard">Keyboard</Link></li>
+              <li><Link to="/category/Mouse">Mouse</Link></li>
+              <li><Link to="/category/Headset">Headset</Link></li>
+              <li><Link to="/add-product">Add Product</Link></li>
+            </ul>
+          )}
         </li>
 
         <li>
@@ -39,7 +42,9 @@ function Navbar() {
           </Link>
         </li>
 
-        <li><Link to="/edit/1">Edit</Link></li>
+        <li>
+          <Link to="/edit-product/1">Edit Product</Link>
+        </li>
       </ul>
     </nav>
   );
