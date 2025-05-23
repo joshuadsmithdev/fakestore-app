@@ -1,48 +1,47 @@
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --primary-color: #00ffea;
+  --accent-color: #ff4777;
+  --dark-bg: #1e1e1e;
+  --light-bg: #f5f5f5;
+  --font: 'Segoe UI', sans-serif;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f5f5f5;
-  color: #222;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  font-family: var(--font);
+  color: #e0e0e0;
 }
 
-/* Make sure root doesn't cause layout shift */
-#root {
-  width: 100%;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Layout wrapper */
-.layout {
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* Navbar Styles */
 .navbar {
-  background-color: #1e1e1e;
+  background: linear-gradient(90deg, #1e1e1e, #2c2c2c);
   color: #fff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .logo a {
-  color: #00ffea;
-  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.75rem;
   font-weight: bold;
-  text-decoration: none;
 }
 
 .menu-toggle {
@@ -56,63 +55,128 @@ body {
   display: flex;
   list-style: none;
   gap: 1.5rem;
-  align-items: center;
-}
-
-.nav-links li {
-  margin: 0;
+  margin-right: 1rem;
 }
 
 .nav-links a {
   color: #fff;
-  text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #00ffea;
+  color: var(--primary-color);
 }
 
 .cart-count {
-  background: #ff4777;
-  color: #fff;
+  background: var(--accent-color);
+  color: white;
   font-size: 0.8rem;
-  padding: 2px 6px;
+  padding: 3px 7px;
   border-radius: 50%;
-  margin-left: 4px;
-}
-
-/* Dropdown */
-.dropdown {
-  position: relative;
-}
-
-.dropdown span {
-  cursor: pointer;
+  margin-left: 6px;
 }
 
 .dropdown-menu {
-  position: absolute;
   background: #2a2a2a;
   padding: 0.5rem 1rem;
-  top: 2rem;
-  left: 0;
-  display: none;
-  flex-direction: column;
   border-radius: 6px;
+  display: none;
+  position: absolute;
+  top: 2.5rem;
+  flex-direction: column;
 }
 
 .dropdown:hover .dropdown-menu {
   display: flex;
 }
 
-.dropdown-menu a {
-  padding: 0.25rem 0;
-  color: #fff;
-  text-decoration: none;
+.button,
+button {
+  background: var(--primary-color);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #1e1e1e;
+  transition: background 0.25s ease;
 }
 
-/* Mobile Styles */
+.button:hover,
+button:hover {
+  background: #00ccbe;
+}
+
+.card {
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.featured {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.featured h2 {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.filter-buttons button {
+  background-color: #fff;
+  border: 2px solid var(--primary-color);
+  color: #222;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.filter-buttons .active,
+.filter-buttons button:hover {
+  background-color: var(--primary-color);
+  color: #1e1e1e;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -120,26 +184,16 @@ body {
 
   .nav-links {
     display: none;
-    flex-direction: column;
-    background: #1e1e1e;
     position: absolute;
     top: 60px;
     right: 0;
-    padding: 1rem 2rem;
-    border-radius: 0 0 0 10px;
+    background: #1e1e1e;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
   }
 
   .nav-links.open {
     display: flex;
-  }
-
-  .dropdown-menu {
-    position: static;
-    background: transparent;
-    padding: 0;
-  }
-
-  .dropdown-menu a {
-    padding: 0.25rem 1rem;
   }
 }
