@@ -1,9 +1,8 @@
-# Netlify config for React (CRA or Vite). Adjust 'publish' if needed.
 [build]
   command = "npm run build"
-  publish = "build"
+  publish = "dist"
 
-# Handle client-side routing (React Router)
+# SPA routing (if you use React Router)
 [[redirects]]
   from = "/*"
   to = "/index.html"
